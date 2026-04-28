@@ -1,6 +1,5 @@
 # 360° Image Compression Optimizer
-### Professional Tool for Virtual Tour Asset Optimization
-
+### Professional Tool for Image Compression
 ---
 
 ## 🚀 Instalación rápida
