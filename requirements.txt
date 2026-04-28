@@ -1,0 +1,8 @@
+# 360° Image Compression Optimizer — Requirements
+# Install with: pip install -r requirements.txt
+
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Optional but recommended: enables SSIM quality score
+scikit-image>=0.21.0
