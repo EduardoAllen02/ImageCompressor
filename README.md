@@ -1,7 +1,13 @@
 # 360° Image Compression Optimizer
 ### Professional Tool for Image Compression
 ---
+---
 
+## Preview
+
+![Preview](./preview.png)
+
+---
 ## 🚀 Instalación rápida
 
 ```bash
