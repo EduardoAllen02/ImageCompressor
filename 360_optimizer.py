@@ -512,7 +512,7 @@ class App360Optimizer(tk.Tk):
         ).pack(side="right", padx=20)
 
         tk.Button(
-            topbar, text="OPEN IMAGE",
+            topbar, text="  \U0001f4c2  OPEN IMAGE",
             bg=ACCENT_BLUE, fg=DARK_BG,
             font=("Segoe UI", 10, "bold"),
             relief="flat", cursor="hand2", padx=14,
@@ -598,9 +598,9 @@ class App360Optimizer(tk.Tk):
 
         self._section(parent, "TARGET SIZE PRESETS")
         for label, preset_q in [
-            ("~5MB target", 65),
-            ("~3MB fast load", 50),
-            ("Max quality", 92),
+            ("\U0001f3af  ~5MB target", 65),
+            ("⚡  ~3MB fast load", 50),
+            ("\U0001f3c6  Max quality", 92),
         ]:
             tk.Button(
                 parent, text=label, bg=CARD_BG, fg=TEXT_PRIMARY,
@@ -611,7 +611,7 @@ class App360Optimizer(tk.Tk):
 
         self._section(parent, "EXPORT")
         tk.Button(
-            parent, text="SAVE COMPRESSED IMAGE",
+            parent, text="\U0001f4be  SAVE COMPRESSED IMAGE",
             bg=ACCENT_GREEN, fg=DARK_BG,
             font=("Segoe UI", 10, "bold"), relief="flat",
             cursor="hand2", pady=8,
@@ -636,7 +636,7 @@ class App360Optimizer(tk.Tk):
         ).pack(side="left", padx=(4, 0))
 
         tk.Button(
-            parent, text="BATCH COMPRESS FOLDER",
+            parent, text="\U0001f680  BATCH COMPRESS FOLDER",
             bg=ACCENT_ORANGE, fg=DARK_BG,
             font=("Segoe UI", 10, "bold"), relief="flat",
             cursor="hand2", pady=8,
@@ -972,11 +972,11 @@ class App360Optimizer(tk.Tk):
                 hints.append("SSIM degraded")
         if size_mb <= 5:
             hints.append(
-                f"{size_mb:.2f} MB \u2014 within 5MB target!"
+                f"\U0001f3af {size_mb:.2f} MB \u2014 within 5MB target!"
             )
         else:
             hints.append(
-                f"{size_mb:.2f} MB"
+                f"\U0001f4e6 {size_mb:.2f} MB"
                 f" \u2014 reduce quality to hit 5MB target"
             )
         return "  |  ".join(hints)
@@ -1092,7 +1092,7 @@ class App360Optimizer(tk.Tk):
                 0,
                 lambda: self._lbl_batch_status.configure(  # type: ignore[union-attr]
                     text=(
-                        f"Done! {total} files."
+                        f"✅ Done! {total} files."
                         f" Saved {saved_mb:.1f} MB"
                         f" of {orig_mb:.1f} MB total."
                     )
@@ -1120,7 +1120,7 @@ class App360Optimizer(tk.Tk):
                     PREVIEW_W // 2, PREVIEW_H // 2,
                     text=(
                         "No image loaded\n"
-                        "Click  OPEN IMAGE  to begin"
+                        "Click  \U0001f4c2 OPEN IMAGE  to begin"
                     ),
                     fill=TEXT_MUTED, font=FONT_LABEL, justify="center",
                 )
