@@ -32,6 +32,12 @@ except ImportError:
     print("Pillow not found. Install with: pip install Pillow")
     sys.exit(1)
 
+try:
+    from tkinterdnd2 import TkinterDnD, DND_FILES
+    HAS_DND = True
+except ImportError:
+    HAS_DND = False
+
 # Pillow >=10 moved resampling filters to Image.Resampling.*
 # This shim supports both old and new versions.
 LANCZOS = getattr(Image, "Resampling", Image).LANCZOS
@@ -421,7 +427,10 @@ class StatCard(tk.Frame):
 # ─────────────────────────────────────────────────────────────
 #  MAIN APPLICATION
 # ─────────────────────────────────────────────────────────────
-class App360Optimizer(tk.Tk):
+_BaseWindow = TkinterDnD.Tk if HAS_DND else tk.Tk
+
+
+class App360Optimizer(_BaseWindow):
     """Main application window for the 360° compression optimizer."""
 
     def __init__(self) -> None:
@@ -689,6 +698,9 @@ class App360Optimizer(tk.Tk):
             highlightthickness=1, highlightbackground=BORDER_COLOR,
         )
         self._canvas_orig.pack(padx=8, pady=(0, 8))
+        if HAS_DND:
+            self._canvas_orig.drop_target_register(DND_FILES)
+            self._canvas_orig.dnd_bind("<<Drop>>", self._on_drop)
 
         comp_box = tk.Frame(preview_frame, bg=CARD_BG)
         comp_box.pack(side="left", fill="both", expand=True, padx=(4, 0))
@@ -785,6 +797,18 @@ class App360Optimizer(tk.Tk):
         if self._job:
             self.after_cancel(self._job)
         self._job = self.after(220, self._run_compression)
+
+    # ── DRAG & DROP ─────────────────────────────────────────
+    def _on_drop(self, event: tk.Event) -> None:  # type: ignore[type-arg]
+        """Handle file drop onto the canvas."""
+        raw = event.data.strip()
+        # tkinterdnd2 wraps paths with spaces in braces: {C:/path/my file.jpg}
+        if raw.startswith("{") and raw.endswith("}"):
+            path = raw[1:-1]
+        else:
+            path = raw.split()[0]
+        if os.path.isfile(path):
+            self._load_image(path)
 
     # ── OPEN & LOAD ─────────────────────────────────────────
     def _open_file(self) -> None:
@@ -1120,7 +1144,8 @@ class App360Optimizer(tk.Tk):
                     PREVIEW_W // 2, PREVIEW_H // 2,
                     text=(
                         "No image loaded\n"
-                        "Click  \U0001f4c2 OPEN IMAGE  to begin"
+                        "Drag & drop an image here\n"
+                        "or click  \U0001f4c2 OPEN IMAGE"
                     ),
                     fill=TEXT_MUTED, font=FONT_LABEL, justify="center",
                 )
