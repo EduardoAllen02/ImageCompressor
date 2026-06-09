@@ -2,7 +2,7 @@
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║         360° IMAGE COMPRESSION OPTIMIZER                     ║
-║         Professional Tool for Virtual Tour Assets            ║
+║         Professional Tool for 360° Panoramic Images         ║
 ╚══════════════════════════════════════════════════════════════╝
 
 Finds the optimal compression point for 360 panoramic images.
@@ -427,9 +427,7 @@ class App360Optimizer(tk.Tk):
     def __init__(self) -> None:
         """Create the main window and initialise all state."""
         super().__init__()
-        self.title(
-            "360° Image Compression Optimizer  —  Virtual Tour Asset Tool"
-        )
+        self.title("360° Image Compression Optimizer")
         self.configure(bg=DARK_BG)
         self.minsize(1200, 820)
 
@@ -502,10 +500,6 @@ class App360Optimizer(tk.Tk):
             bg=PANEL_BG, fg=TEXT_PRIMARY,
             font=("Segoe UI", 14, "bold"),
         ).pack(side="left", pady=8)
-        tk.Label(
-            topbar, text="Virtual Tour Asset Tool  •  FVG UNESCO",
-            bg=PANEL_BG, fg=TEXT_MUTED, font=FONT_SMALL,
-        ).pack(side="left", padx=16, pady=8)
 
         ssim_info = (
             "SSIM enabled" if HAS_SKIMAGE
@@ -518,7 +512,7 @@ class App360Optimizer(tk.Tk):
         ).pack(side="right", padx=20)
 
         tk.Button(
-            topbar, text="  \U0001f4c2  OPEN IMAGE",
+            topbar, text="OPEN IMAGE",
             bg=ACCENT_BLUE, fg=DARK_BG,
             font=("Segoe UI", 10, "bold"),
             relief="flat", cursor="hand2", padx=14,
@@ -604,9 +598,9 @@ class App360Optimizer(tk.Tk):
 
         self._section(parent, "TARGET SIZE PRESETS")
         for label, preset_q in [
-            ("\U0001f3af  ~5MB target", 65),
-            ("\u26a1  ~3MB fast load", 50),
-            ("\U0001f3c6  Max quality", 92),
+            ("~5MB target", 65),
+            ("~3MB fast load", 50),
+            ("Max quality", 92),
         ]:
             tk.Button(
                 parent, text=label, bg=CARD_BG, fg=TEXT_PRIMARY,
@@ -617,7 +611,7 @@ class App360Optimizer(tk.Tk):
 
         self._section(parent, "EXPORT")
         tk.Button(
-            parent, text="\U0001f4be  SAVE COMPRESSED IMAGE",
+            parent, text="SAVE COMPRESSED IMAGE",
             bg=ACCENT_GREEN, fg=DARK_BG,
             font=("Segoe UI", 10, "bold"), relief="flat",
             cursor="hand2", pady=8,
@@ -642,7 +636,7 @@ class App360Optimizer(tk.Tk):
         ).pack(side="left", padx=(4, 0))
 
         tk.Button(
-            parent, text="\U0001f680  BATCH COMPRESS FOLDER",
+            parent, text="BATCH COMPRESS FOLDER",
             bg=ACCENT_ORANGE, fg=DARK_BG,
             font=("Segoe UI", 10, "bold"), relief="flat",
             cursor="hand2", pady=8,
@@ -978,11 +972,11 @@ class App360Optimizer(tk.Tk):
                 hints.append("SSIM degraded")
         if size_mb <= 5:
             hints.append(
-                f"\U0001f3af {size_mb:.2f} MB \u2014 within 5MB target!"
+                f"{size_mb:.2f} MB \u2014 within 5MB target!"
             )
         else:
             hints.append(
-                f"\U0001f4e6 {size_mb:.2f} MB"
+                f"{size_mb:.2f} MB"
                 f" \u2014 reduce quality to hit 5MB target"
             )
         return "  |  ".join(hints)
@@ -1098,7 +1092,7 @@ class App360Optimizer(tk.Tk):
                 0,
                 lambda: self._lbl_batch_status.configure(  # type: ignore[union-attr]
                     text=(
-                        f"\u2705 Done! {total} files."
+                        f"Done! {total} files."
                         f" Saved {saved_mb:.1f} MB"
                         f" of {orig_mb:.1f} MB total."
                     )
@@ -1126,7 +1120,7 @@ class App360Optimizer(tk.Tk):
                     PREVIEW_W // 2, PREVIEW_H // 2,
                     text=(
                         "No image loaded\n"
-                        "Click  \U0001f4c2 OPEN IMAGE  to begin"
+                        "Click  OPEN IMAGE  to begin"
                     ),
                     fill=TEXT_MUTED, font=FONT_LABEL, justify="center",
                 )

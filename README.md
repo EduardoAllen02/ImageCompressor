@@ -1,6 +1,6 @@
 # 360° Image Compression Optimizer
-### Professional Tool for Image Compression
----
+### Professional Tool for 360° Image Optimization
+
 ---
 
 ## Preview
@@ -8,7 +8,8 @@
 ![Preview](./preview.png)
 
 ---
-## 🚀 Instalación rápida
+
+## Instalación rápida
 
 ```bash
 # 1. Instalar dependencias
@@ -23,16 +24,16 @@ python 360_optimizer.py mi_imagen_360.jpg
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
-Encontrar el punto óptimo de compresión para imágenes 360° del tour virtual:
+Encontrar el punto óptimo de compresión para imágenes 360°:
 - **Original**: ~15 MB por imagen
 - **Objetivo**: ~5 MB manteniendo calidad visual
 - **Reducción esperada**: 60–70% del tamaño original
 
 ---
 
-## 📊 Métricas explicadas
+## Métricas explicadas
 
 | Métrica | Qué mide | Valor óptimo |
 |---------|----------|--------------|
@@ -43,7 +44,7 @@ Encontrar el punto óptimo de compresión para imágenes 360° del tour virtual:
 
 ---
 
-## 🎛️ Uso del slider
+## Uso del slider
 
 ```
 ◀─────────────────────────────────────────▶
@@ -55,12 +56,12 @@ ZONA ÓPTIMA: Q55–Q75
 ```
 
 **Punto recomendado para imágenes 360° WebGL:**
-- **JPEG Q65** → ~4–6 MB, PSNR ~41 dB ✅
-- **WebP Q70** → ~3–5 MB, PSNR ~42 dB ✅ (mejor opción si los navegadores lo soportan)
+- **JPEG Q65** → ~4–6 MB, PSNR ~41 dB
+- **WebP Q70** → ~3–5 MB, PSNR ~42 dB (mejor opción si los navegadores lo soportan)
 
 ---
 
-## ⚙️ Opciones avanzadas
+## Opciones avanzadas
 
 **Chroma Subsampling JPEG:**
 - `4:4:4` → Mejor color, archivo más grande (+10–15%)
@@ -68,11 +69,11 @@ ZONA ÓPTIMA: Q55–Q75
 - `4:2:0` → Máxima compresión, puede afectar bordes
 
 **Progressive JPEG:**
-- ✅ Activar siempre — carga gradualmente en el browser
+- Activar siempre — carga gradualmente en el browser
 
 ---
 
-## 🚀 Batch Processing
+## Batch Processing
 
 1. Seleccionar carpeta con todas las imágenes 360°
 2. Ajustar calidad con el slider hasta encontrar el punto óptimo
@@ -81,12 +82,12 @@ ZONA ÓPTIMA: Q55–Q75
 
 ---
 
-## 📋 Próximos pasos (implementación en el tour)
+## Próximos pasos
 
 Después de determinar la calidad óptima con esta herramienta:
 
 1. **Comprimir todos los assets** con el batch processor
-2. **Implementar lazy loading** — cargar la imagen 360° solo cuando el usuario navega a esa escena
+2. **Implementar lazy loading** — cargar la imagen 360° solo cuando el usuario la necesita
 3. **Caché profesional** — Service Worker + Cache API para retener imágenes ya visitadas
 4. **Formato adaptativo** — WebP para browsers modernos, JPEG como fallback
-5. **Preload inteligente** — precargar la siguiente escena mientras el usuario ve la actual
+5. **Preload inteligente** — precargar la siguiente imagen mientras el usuario ve la actual
