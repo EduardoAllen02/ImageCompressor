@@ -80,14 +80,3 @@ ZONA ÓPTIMA: Q55–Q75
 3. Click en **BATCH COMPRESS FOLDER**
 4. Las imágenes comprimidas se guardan en `/tu_carpeta/compressed_360/`
 
----
-
-## Próximos pasos
-
-Después de determinar la calidad óptima con esta herramienta:
-
-1. **Comprimir todos los assets** con el batch processor
-2. **Implementar lazy loading** — cargar la imagen 360° solo cuando el usuario la necesita
-3. **Caché profesional** — Service Worker + Cache API para retener imágenes ya visitadas
-4. **Formato adaptativo** — WebP para browsers modernos, JPEG como fallback
-5. **Preload inteligente** — precargar la siguiente imagen mientras el usuario ve la actual
